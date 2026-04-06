@@ -199,7 +199,21 @@
   gap: 10px;
 }
 
+.answer-button {
+  border-style: solid;
+  border-radius: 10px;
+}
+
 .answer-button:hover {
   background-color: rgb(11, 73, 80);
   color: white;
+  cursor: pointer;
+}
+
+.scoreboard {
+  border-style: solid;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+
 }

@@ -6,6 +6,7 @@ export default function GenerateQuestions() {
     const [question, setQuestion] = useState(null);
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
     const [score, setScore] = useState(0);
+    const [disabled, setDisabled] = useState(false);
 
     const getQuestions = async () => {
         const response = await fetch('https://opentdb.com/api.php?amount=1');
@@ -23,10 +24,11 @@ export default function GenerateQuestions() {
     }, [])
 
     const handleAnswer = (isCorrect) => {
+        if (disabled) return;
+        setDisabled(true);
         if (isCorrect) {
             setScore(score + 1);
         }
-        getQuestions();
     }
     
     return (
@@ -35,7 +37,9 @@ export default function GenerateQuestions() {
                 <Score score={score}/>
             </div>
             <div>
-                <button onClick={() => getQuestions().catch(console.error)}>New Question</button>
+                <button className="question-button" onClick={() => {
+                    getQuestions().finally(() => setDisabled(false))}}>New Question
+                </button>
             </div>
             <br />
             {question && (
@@ -43,6 +47,8 @@ export default function GenerateQuestions() {
                         question={question}
                         answers={shuffledAnswers}
                         onAnswer={handleAnswer}
+                        disabled={disabled}
+                        correctAnswer={question.correct_answer}
                     />
             )}
         </>
