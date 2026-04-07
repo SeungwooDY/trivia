@@ -37,7 +37,7 @@ export default function GenerateQuestions() {
                 <Score score={score}/>
             </div>
             <div>
-                <button className="question-button" onClick={() => {
+                <button className="btn btn-primary" onClick={() => {
                     getQuestions().finally(() => setDisabled(false))}}>New Question
                 </button>
             </div>

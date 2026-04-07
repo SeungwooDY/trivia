@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { decode } from 'html-entities'
 
 export default function QuestionCard( {question, answers, onAnswer, disabled, correctAnswer}) {
     const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -23,12 +24,12 @@ export default function QuestionCard( {question, answers, onAnswer, disabled, co
     return (
         <>
             <div className="question-card">
-                <p>{question.question}</p>
+                <p>{decode(question.question)}</p>
             </div>
             <br />
             <div className="answer-choices">
                 {answers.map((answer, i) => (
-                    <button key={i} className="answer-button" onClick={() => handleAnswer(answer)} disabled={disabled} style={{ backgroundColor: getColor(answer)}}>{answer}</button>
+                    <button key={i} className="answer-button" onClick={() => handleAnswer(answer)} disabled={disabled} style={{ backgroundColor: getColor(answer)}}>{decode(answer)}</button>
                 ))}
             </div>
         </>
