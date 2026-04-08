@@ -26,6 +26,7 @@ export default function QuestionCard( {question, answers, onAnswer, disabled, co
             <div className="question-card">
                 <p>{decode(question.question)}</p>
             </div>
+            
             <br />
             <div className="answer-choices">
                 {answers.map((answer, i) => (

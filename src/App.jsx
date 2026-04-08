@@ -4,11 +4,13 @@ import GenerateQuestions from './components/GenerateQuestions.jsx'
 import QuestionCard from './components/QuestionCard.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Trivia!</h1>
+    <div>
+      <h1 className="text-center bg-warning p-3 text-dark p-4 rounded shadow-lg">Trivia!</h1>
+    </div>
+      <br />
       <GenerateQuestions />
     </>
   )

@@ -1,7 +1,7 @@
 export default function Score({ score }) {
     return (
         <>
-            <p className="scoreboard">Score: {score}</p>
+            <p className="text-center border border-2 scoreboard">Score: {score}</p>
         </>
     )
 }
